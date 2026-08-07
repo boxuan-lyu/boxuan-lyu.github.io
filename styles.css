@@ -655,15 +655,19 @@ h3 {
   font-style: italic;
 }
 
-.award-banner {
+.awards-panel {
   margin-top: 70px;
-  padding: 24px 28px;
+  color: var(--paper);
+  background: var(--green);
+}
+
+.awards-header {
+  padding: 22px 28px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 22px;
-  color: var(--paper);
-  background: var(--green);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .award-symbol {
@@ -671,8 +675,8 @@ h3 {
   font-size: 1.7rem;
 }
 
-.award-banner p {
-  margin-bottom: 3px;
+.awards-header p {
+  margin: 0;
   color: #b9d5ca;
   font-size: 0.63rem;
   font-weight: 740;
@@ -680,16 +684,39 @@ h3 {
   text-transform: uppercase;
 }
 
-.award-banner h3 {
-  margin: 0;
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
 .award-year {
   color: #b9d5ca;
   font-family: var(--serif);
+}
+
+.awards-list {
+  padding-inline: 28px;
+}
+
+.award-item {
+  padding-block: 22px;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.award-item:last-child {
+  border-bottom: 0;
+}
+
+.award-number {
+  color: #f4b091;
+  font-family: var(--serif);
+  font-size: 0.78rem;
+}
+
+.award-item h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+  font-weight: 500;
 }
 
 .section-timeline {
@@ -969,12 +996,9 @@ h3 {
     padding-left: 46px;
   }
 
-  .award-banner {
-    grid-template-columns: auto 1fr;
-  }
-
-  .award-year {
-    display: none;
+  .awards-header,
+  .awards-list {
+    padding-inline: 22px;
   }
 
   .timeline-item {
@@ -1024,8 +1048,9 @@ h3 {
     padding: 22px;
   }
 
-  .award-banner {
-    padding: 22px;
+  .award-item {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 12px;
   }
 
   .group-title {
