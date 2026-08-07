@@ -655,28 +655,34 @@ h3 {
   font-style: italic;
 }
 
-.awards-panel {
+.award-cards {
   margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.award-card {
+  min-height: 250px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
   color: var(--paper);
   background: var(--green);
+  border: 1px solid var(--green);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.awards-header {
-  padding: 22px 28px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+.award-card:hover {
+  box-shadow: 0 18px 40px rgba(27, 48, 39, 0.14);
+  transform: translateY(-4px);
+}
+
+.award-card-meta {
+  display: flex;
   align-items: center;
-  gap: 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.award-symbol {
-  color: #f4b091;
-  font-size: 1.7rem;
-}
-
-.awards-header p {
-  margin: 0;
+  justify-content: space-between;
+  gap: 16px;
   color: #b9d5ca;
   font-size: 0.63rem;
   font-weight: 740;
@@ -684,39 +690,39 @@ h3 {
   text-transform: uppercase;
 }
 
-.award-year {
-  color: #b9d5ca;
+.award-card-meta span:last-child {
   font-family: var(--serif);
+  font-size: 0.82rem;
+  letter-spacing: 0;
 }
 
-.awards-list {
-  padding-inline: 28px;
-}
-
-.award-item {
-  padding-block: 22px;
+.award-card-content {
+  margin-block: 40px 28px;
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
-  align-items: center;
-  gap: 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
 }
 
-.award-item:last-child {
-  border-bottom: 0;
-}
-
-.award-number {
+.award-symbol {
   color: #f4b091;
-  font-family: var(--serif);
-  font-size: 0.78rem;
+  font-size: 1.55rem;
+  line-height: 1;
 }
 
-.award-item h3 {
+.award-card h3 {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+  font-size: clamp(1.18rem, 1.8vw, 1.48rem);
   font-weight: 500;
+  line-height: 1.35;
+}
+
+.award-card-index {
+  margin-top: auto;
+  color: #b9d5ca;
+  font-family: var(--serif);
+  font-size: 0.78rem;
 }
 
 .section-timeline {
@@ -996,9 +1002,8 @@ h3 {
     padding-left: 46px;
   }
 
-  .awards-header,
-  .awards-list {
-    padding-inline: 22px;
+  .award-cards {
+    grid-template-columns: 1fr;
   }
 
   .timeline-item {
@@ -1048,9 +1053,9 @@ h3 {
     padding: 22px;
   }
 
-  .award-item {
-    grid-template-columns: 32px minmax(0, 1fr);
-    gap: 12px;
+  .award-card {
+    min-height: 225px;
+    padding: 22px;
   }
 
   .group-title {
