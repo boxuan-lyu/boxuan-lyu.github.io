@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vlaks425.github.io/sitemap.xml
+Sitemap: https://boxuan-lyu.github.io/sitemap.xml
