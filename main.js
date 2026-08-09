@@ -340,7 +340,7 @@ if (visitorSection) {
       renderRanking(data.countries);
       statusElement.textContent = isDemo
         ? "Preview data for layout testing. Live visits are not shown in this preview."
-        : "Approximate, privacy-aware visit counts. Identifiable bots are excluded.";
+        : "Counts refresh hourly. They are approximate, privacy-aware, and exclude identifiable bots.";
     } catch (error) {
       if (error.name === "AbortError") return;
       report.classList.add("is-error");
