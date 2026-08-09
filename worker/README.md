@@ -19,7 +19,13 @@ reporting period for one hour.
    wrangler deploy
    ```
 
-4. Copy the resulting `/stats` URL into the `data-stats-endpoint` attribute on
-   the `#visitors` section in `index.html`.
+The deployed endpoint is:
+
+```text
+https://boxuan-lyu-visitor-stats.boxuan-lyu-visitor-stats.workers.dev/stats
+```
+
+It is configured in the `data-stats-endpoint` attribute on the `#visitors`
+section in `index.html`.
 
 Do not put the token in `wrangler.jsonc`, Git, or browser JavaScript.

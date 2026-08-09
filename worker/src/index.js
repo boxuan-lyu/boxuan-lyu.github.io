@@ -51,7 +51,9 @@ export const resolvePeriod = ({ range, value, trackingStart, now = new Date() })
   const currentMonth = `${today.year}-${pad(today.month)}`;
   const firstTrackedMonth = trackingStart.slice(0, 7);
   const firstTrackedYear = Number(trackingStart.slice(0, 4));
-  const nowIso = now.toISOString();
+  const currentHour = new Date(now);
+  currentHour.setUTCMinutes(0, 0, 0);
+  const nowIso = currentHour.toISOString();
 
   if (range === "month") {
     if (!/^\d{4}-\d{2}$/.test(value || "")) throw new Error("Month value must use YYYY-MM");

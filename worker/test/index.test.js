@@ -13,16 +13,15 @@ test("resolves the current month in Tokyo", () => {
       value: "2026-08",
       label: "August 2026",
       start: "2026-08-01T00:00:00+09:00",
-      end: "2026-08-09T04:30:00.000Z",
+      end: "2026-08-09T04:00:00.000Z",
     },
   );
 });
 
 test("resolves all-time from the tracking start", () => {
-  assert.equal(
-    resolvePeriod({ range: "all", trackingStart: "2026-08-09", now }).label,
-    "Since Aug 9, 2026",
-  );
+  const period = resolvePeriod({ range: "all", trackingStart: "2026-08-09", now });
+  assert.equal(period.label, "Since Aug 9, 2026");
+  assert.equal(period.end, "2026-08-09T04:00:00.000Z");
 });
 
 test("rejects a period before tracking started", () => {
@@ -67,6 +66,7 @@ test("serves only normalized aggregate data with CORS", async () => {
     const url = new URL(request instanceof Request ? request.url : request);
     assert.equal(url.hostname, "boxuan-lyu.goatcounter.com");
     assert.equal(url.pathname, "/api/v0/stats/locations");
+    assert.match(url.searchParams.get("end"), /:00:00\.000Z$/);
     assert.equal(new Headers(init.headers).get("Authorization"), "Bearer secret-token");
     return new Response(JSON.stringify({
       stats: [{ id: "JP", count: 3 }, { id: "US", count: 2 }],
