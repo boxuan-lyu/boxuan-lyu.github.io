@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "boxuan-lyu-visitor-stats",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-09",
+  "workers_dev": true,
+  "vars": {
+    "GOATCOUNTER_CODE": "boxuan-lyu",
+    "ALLOWED_ORIGINS": "https://boxuan-lyu.github.io,http://localhost:8000,http://127.0.0.1:8000",
+    "TRACKING_START": "2026-08-09"
+  }
+}

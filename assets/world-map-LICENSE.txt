@@ -1,0 +1,7 @@
+The source geography for assets/world-map.svg is Natural Earth 1:110m
+Admin 0 Countries, obtained from the Natural Earth Vector repository:
+
+https://github.com/nvkelso/natural-earth-vector/
+
+Natural Earth data is in the public domain. See:
+https://www.naturalearthdata.com/about/terms-of-use/

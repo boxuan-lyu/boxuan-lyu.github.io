@@ -26,12 +26,17 @@
     <meta name="twitter:image" content="https://boxuan-lyu.github.io/assets/og.png" />
     <link rel="canonical" href="https://boxuan-lyu.github.io/" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
     <script>
       document.documentElement.classList.remove("no-js");
       document.documentElement.classList.add("js");
     </script>
-    <script src="main.js" defer></script>
+    <script src="main.js?v=2" defer></script>
+    <script
+      data-goatcounter="https://boxuan-lyu.goatcounter.com/count"
+      async
+      src="https://gc.zgo.at/count.js"
+    ></script>
     <title>Boxuan Lyu — NLP Researcher</title>
   </head>
   <body>
@@ -54,6 +59,7 @@
           <a href="#publications">Publications</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
+          <a href="#visitors">Visitors</a>
         </nav>
       </div>
     </header>
@@ -359,6 +365,85 @@
               <p>Sep 2018 — Jun 2022</p>
               <p class="supervisor">Information and Computing Science</p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section visitors-section"
+        id="visitors"
+        aria-labelledby="visitors-title"
+        data-stats-endpoint=""
+        data-tracking-start="2026-08-09"
+      >
+        <div class="shell">
+          <div class="section-heading section-heading-row visitors-heading reveal">
+            <div>
+              <p class="section-number">04 / Visitors</p>
+              <h2 id="visitors-title">Visitors around the world.</h2>
+            </div>
+            <p class="visitors-intro">
+              An aggregate, privacy-aware view of where this site is read.
+              No personal profiles or precise locations are stored.
+            </p>
+          </div>
+
+          <div class="visitor-report reveal" data-visitor-report>
+            <div class="visitor-toolbar">
+              <div class="visitor-tabs" role="tablist" aria-label="Visitor report period">
+                <button type="button" role="tab" aria-selected="true" data-visitor-range="month">Month</button>
+                <button type="button" role="tab" aria-selected="false" data-visitor-range="year">Year</button>
+                <button type="button" role="tab" aria-selected="false" data-visitor-range="all">All time</button>
+              </div>
+
+              <label class="visitor-period-picker" for="visitor-period">
+                <span class="sr-only">Choose reporting period</span>
+                <select id="visitor-period" aria-label="Choose reporting period"></select>
+              </label>
+            </div>
+
+            <div class="visitor-summary" aria-live="polite">
+              <div class="visitor-stat">
+                <span class="visitor-stat-label">Visits</span>
+                <strong data-visitor-total>—</strong>
+              </div>
+              <div class="visitor-stat">
+                <span class="visitor-stat-label">Countries / regions</span>
+                <strong data-visitor-countries>—</strong>
+              </div>
+              <p class="visitor-period-label" data-visitor-period-label>This month</p>
+            </div>
+
+            <div class="visitor-visuals">
+              <div class="visitor-map-card">
+                <div class="visitor-map-frame" data-visitor-map aria-busy="true">
+                  <p class="visitor-map-loading">Loading map…</p>
+                </div>
+                <div class="visitor-map-tooltip" data-visitor-tooltip hidden></div>
+                <div class="visitor-legend" aria-hidden="true">
+                  <span>Fewer visits</span>
+                  <span class="visitor-legend-scale"><i></i><i></i><i></i><i></i><i></i></span>
+                  <span>More</span>
+                </div>
+              </div>
+
+              <aside class="visitor-ranking" aria-labelledby="visitor-ranking-title">
+                <div class="visitor-ranking-heading">
+                  <h3 id="visitor-ranking-title">Top locations</h3>
+                  <span data-visitor-updated>Awaiting data</span>
+                </div>
+                <ol data-visitor-ranking>
+                  <li class="visitor-ranking-empty">Location totals will appear here.</li>
+                </ol>
+              </aside>
+            </div>
+
+            <p class="visitor-status" data-visitor-status role="status">
+              Preparing the first visitor report.
+            </p>
+            <noscript>
+              <p class="visitor-status">JavaScript is required to display the visitor map.</p>
+            </noscript>
           </div>
         </div>
       </section>

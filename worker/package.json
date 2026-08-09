@@ -1,0 +1,8 @@
+{
+  "name": "boxuan-lyu-visitor-stats",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
