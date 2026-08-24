@@ -4,12 +4,16 @@ const siteNav = document.querySelector(".site-nav");
 menuButton?.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
   menuButton.setAttribute("aria-expanded", String(!isOpen));
+  const menuLabel = menuButton.querySelector(".sr-only");
+  if (menuLabel) menuLabel.textContent = isOpen ? "Open navigation" : "Close navigation";
   siteNav?.classList.toggle("open", !isOpen);
 });
 
 siteNav?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     menuButton?.setAttribute("aria-expanded", "false");
+    const menuLabel = menuButton?.querySelector(".sr-only");
+    if (menuLabel) menuLabel.textContent = "Open navigation";
     siteNav.classList.remove("open");
   });
 });
@@ -22,19 +26,25 @@ document.querySelectorAll(".email-link").forEach((link) => {
   }
 });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
+const revealElements = document.querySelectorAll(".reveal");
 
-document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.06 }
+  );
+
+  revealElements.forEach((element) => revealObserver.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
+}
 
 const navLinks = [...document.querySelectorAll(".site-nav a")];
 const sections = navLinks
