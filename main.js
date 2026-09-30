@@ -1,69 +1,32 @@
-const menuButton = document.querySelector(".menu-button");
-const siteNav = document.querySelector(".site-nav");
+// Filter the static publication list; all papers remain readable without JavaScript.
+const publicationFilters = [...document.querySelectorAll("[data-category]")];
+const publications = [...document.querySelectorAll(".bl-paper[data-type]")];
+const emptyPublications = document.querySelector(".bl-empty");
 
-menuButton?.addEventListener("click", () => {
-  const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-  menuButton.setAttribute("aria-expanded", String(!isOpen));
-  const menuLabel = menuButton.querySelector(".sr-only");
-  if (menuLabel) menuLabel.textContent = isOpen ? "Open navigation" : "Close navigation";
-  siteNav?.classList.toggle("open", !isOpen);
-});
-
-siteNav?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    menuButton?.setAttribute("aria-expanded", "false");
-    const menuLabel = menuButton?.querySelector(".sr-only");
-    if (menuLabel) menuLabel.textContent = "Open navigation";
-    siteNav.classList.remove("open");
+publicationFilters.forEach((button) => {
+  button.addEventListener("click", () => {
+    const category = button.dataset.category;
+    publicationFilters.forEach((candidate) => {
+      candidate.setAttribute("aria-pressed", String(candidate === button));
+    });
+    publications.forEach((paper) => {
+      paper.hidden = category !== "all" && paper.dataset.type !== category;
+    });
+    emptyPublications.hidden = publications.some((paper) => !paper.hidden);
   });
 });
 
-document.querySelectorAll(".email-link").forEach((link) => {
-  const user = link.dataset.user;
-  const domain = link.dataset.domain;
-  if (user && domain) {
-    link.href = `mailto:${user}@${domain}`;
-  }
-});
-
-const revealElements = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.06 }
-  );
-
-  revealElements.forEach((element) => revealObserver.observe(element));
-} else {
-  revealElements.forEach((element) => element.classList.add("is-visible"));
+// Keep existing deep links to background sections and the visitor report usable.
+function openLinkedDetails() {
+  if (!window.location.hash) return;
+  let target;
+  try { target = document.getElementById(decodeURIComponent(window.location.hash.slice(1))); }
+  catch { return; }
+  const details = target?.closest("details");
+  if (details) details.open = true;
 }
-
-const navLinks = [...document.querySelectorAll(".site-nav a")];
-const sections = navLinks
-  .map((link) => document.querySelector(link.getAttribute("href")))
-  .filter(Boolean);
-
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
-      });
-    });
-  },
-  { rootMargin: "-25% 0px -65%", threshold: 0 }
-);
-
-sections.forEach((section) => sectionObserver.observe(section));
+window.addEventListener("hashchange", openLinkedDetails);
+openLinkedDetails();
 
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
