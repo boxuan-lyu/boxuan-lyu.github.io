@@ -212,12 +212,13 @@ button, select, summary { cursor: pointer; }
 
 #site-page .bl-venue {
   color:var(--bl-blue);
-  font:11px/1.6 ui-monospace,monospace;
+  font:14px/1.6 ui-monospace,monospace;
 }
 
 #site-page .bl-venue span {
   display:block;
   color:var(--bl-soft);
+  font-size:11px;
 }
 
 #site-page h3 {
